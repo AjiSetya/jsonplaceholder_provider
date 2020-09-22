@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jsonplaceholder_provider/core/enums/viewstate.dart';
 import 'package:jsonplaceholder_provider/core/viewmodels/login_model.dart';
-import 'package:jsonplaceholder_provider/locator.dart';
 import 'package:jsonplaceholder_provider/ui/shared/app_colors.dart';
 import 'package:jsonplaceholder_provider/ui/views/base_view.dart';
 import 'package:jsonplaceholder_provider/ui/widgets/login_header.dart';
-import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -13,7 +11,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final TextEditingController controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class _LoginViewState extends State<LoginView> {
           children: [
             LoginHeader(
                 validationMessage: model.errorMessage,
-                controller: controller),
+                controller: _controller),
             model.state == ViewState.Busy
                 ? CircularProgressIndicator()
                 : FlatButton(
@@ -36,7 +34,7 @@ class _LoginViewState extends State<LoginView> {
                       style: TextStyle(color: Colors.black),
                     ),
                     onPressed: () async {
-                      var loginSuccess = await model.login(controller.text);
+                      var loginSuccess = await model.login(_controller.text);
                       if (loginSuccess) {
                         Navigator.pushNamed(context, '/');
                       }

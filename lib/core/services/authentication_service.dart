@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:jsonplaceholder_provider/core/models/user.dart';
-import 'package:jsonplaceholder_provider/locator.dart';
-
+import '../../locator.dart';
 import 'api.dart';
 
 class AuthenticationService {

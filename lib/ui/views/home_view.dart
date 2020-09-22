@@ -44,12 +44,11 @@ class HomeView extends StatelessWidget {
   }
 
   Widget getPostsUi(List<Post> posts) => ListView.builder(
-        itemCount: posts.length,
-        itemBuilder: (context, index) => PostListItem(
-          post: posts[index],
-          onTap: () {
-            Navigator.pushNamed(context, 'post', arguments: posts[index]);
-          },
-        ),
-      );
+      itemCount: posts.length,
+      itemBuilder: (context, index) => PostListItem(
+            post: posts[index],
+            onTap: () {
+              Navigator.pushNamed(context, 'post', arguments: posts[index]);
+            },
+          ));
 }
